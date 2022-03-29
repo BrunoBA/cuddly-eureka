@@ -1,0 +1,5 @@
+<div class="grid-rows-1 px-5 md:px-auto">
+	<%= for category <- @categories do %>
+		<%= render("__categories_and_nomines.html", category: category) %>
+	<% end %>
+</div>

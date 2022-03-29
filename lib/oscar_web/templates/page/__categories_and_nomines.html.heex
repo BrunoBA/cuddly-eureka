@@ -1,0 +1,24 @@
+	<div class="my-8 max-w-max">
+		<h1 class="text-yellow-500 lg:text-4xl text-lg" 
+				style="font-family: 'futura book legacy','FuturaPT-Book',Futura,'Trebuchet MS',Arial,sans-serif; word-spacing: 3px;"
+		>
+			<%= String.upcase @category.name %>
+		</h1>
+		<span class="text-gray-600" style="font-family: 'futura book legacy','FuturaPT-Book',Futura,'Trebuchet MS',Arial,sans-serif;">
+			NOMINEES
+		</span>
+		<div class="grid grid-flow-row auto-rows-max">
+			<%= for {nominee, _} <- Enum.with_index @category.nominees do %>
+				<div class="mt-2 cursor-pointer select-none">
+					<div class="my-1">
+						<p class="tracking-tighter uppercase text-gray-800" style="font-family: 'futura book legacy','FuturaPT-Book',Futura,'Trebuchet MS',Arial,sans-serif;">
+							<%= nominee.title %>
+						</p>
+						<p class="-my-2 font-light text-gray-800">
+							<%= nominee.subtitle %>
+						</p>
+					</div>
+				</div>
+			<% end %>
+		</div>
+	</div>

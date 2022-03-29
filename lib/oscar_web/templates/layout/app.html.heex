@@ -1,0 +1,25 @@
+<main class="container mx-auto">
+	<div class="w-full flex justify-center">
+		<%= if get_flash(@conn, :info) do %>
+			<div class="mt-1 border-solid text-blue-600 rounded">
+				<span class="inline-flex items-center px-4 py-2 font-medium rounded leading-5">
+					<svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+						<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z" />
+					</svg>
+					<%= get_flash(@conn, :info) %>
+				</span>
+			</div>
+		<% end %>
+		<%= if get_flash(@conn, :error) do %>
+			<div class="mt-1 border-solid text-red-600 rounded">
+				<span class="inline-flex items-center px-3 py-2 font-medium rounded leading-5">
+					<svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+						<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
+					</svg>
+					<%= get_flash(@conn, :error) %>
+				</span>
+			</div>
+		<% end %>
+	</div>
+  <%= @inner_content %>
+</main>

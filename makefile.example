@@ -1,0 +1,20 @@
+IMAGE_NAME=IMAGE_NAME
+USERNAME=USERNAME
+HASH=$(shell git log -1 --format="%h")
+
+login:
+	docker login
+build:
+	echo $(HASH)
+	docker build \
+	--build-arg DATABASE_URL_ARG=ecto://USER:PASSWORD@HOST/DATABASE \
+	--build-arg GOOGLE_CLIENT_ID_ARG= \
+	--build-arg GOOGLE_CLIENT_SECRET_ARG= \
+	-t $(IMAGE_NAME) .
+run: build
+	docker run -p 4000:4000 $(IMAGE_NAME)
+tag: login
+	docker tag $(IMAGE_NAME) $(USERNAME)/$(IMAGE_NAME):$(HASH)
+push: build tag
+	@echo "Pushing image to DOCKER HUB"
+	docker push $(USERNAME)/$(IMAGE_NAME):$(HASH)

@@ -1,0 +1,37 @@
+<div class="bg-white bg-opacity-80 fixed bottom-0 w-full inline-block mt-full sm:hidden">
+		<.get_correct_bets bets={@bets} correct_bets={@correct_bets}/>
+</div>
+<div class="my-4 w-full hidden sm:block">
+	<.get_correct_bets bets={@bets} correct_bets={@correct_bets}/>
+</div>
+
+<div class="my-8 sm:my-4 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-10 mb-20 ">
+	<%= for category <- @categories do %>
+		<div class="ml-3 lg:ml-0 select-none">
+			<% nominee_title = get_bet_name(category.id, @bets) %>
+			<div class="w-full"
+				style="font-family: 'futura book legacy','FuturaPT-Book',Futura,'Trebuchet MS',Arial,sans-serif"
+			>
+				<span class="inline-flex items-center">
+					<% class_category = if (nominee_title === nil), do: "text-yellow-500", else: "text-yellow-500" %>
+					<p class={"lg:text-1xl text-lg select-none uppercase mr-1 #{class_category}"}
+						phx-click="set_as_correct" phx-value-category_id={category.id}
+						style="word-spacing: 3px;"
+					>
+						<%= category.name %>
+					</p>
+					<.get_correct_feedback choices={@correct_bets} category_id={category.id}/>
+					<.incomplete_bet_warning nominee_title={nominee_title}/>
+				</span>	
+			</div>
+			<div>	
+				<p class="tracking-tighter uppercase text-gray-600" style="font-family: 'futura book legacy','FuturaPT-Book',Futura,'Trebuchet MS',Arial,sans-serif;">
+					<%= nominee_title %>
+				</p>
+				<p class="-my-2 font-light">
+					<%= get_subtitle_name(category.id, @bets) %>
+				</p>
+			</div>
+		</div>	
+	<% end %>
+</div>

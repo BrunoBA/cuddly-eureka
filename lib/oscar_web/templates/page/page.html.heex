@@ -1,0 +1,20 @@
+oi
+
+Current temperature: <%= @temperature %>
+
+<div phx-click="inc_temperature" phx-value-square_id="1">
+	increment +
+</div>
+
+<small class="text-white bg-red-500 h-10 w-10 m-1"></small>
+<small class="bg-lime-500 h-10 w-10 m-1"></small>
+<small class="bg-sky-500 h-10 w-10 m-1"></small>
+
+<%= for option <- @options do %>
+	<div phx-click="square" phx-value-square_id={option.value}
+		class={check_option(option.class, @choosen_option, option.value)}
+	>
+		<%= option.value %>
+</div>	
+<% end %>
+
