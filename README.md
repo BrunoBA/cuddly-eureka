@@ -27,3 +27,16 @@ npm run tailwind
 The project will be available on `http://localhost:4000`
 
 ![project](example.png)
+
+
+
+# Pages
+
+## Nominees
+![main](main.png)
+
+## Bets
+![bets](bets.png)
+
+## Ranking
+![ranking](ranking.jpeg)
